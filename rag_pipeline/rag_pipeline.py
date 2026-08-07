@@ -1,18 +1,3 @@
-"""
-rag_pipeline.py
-Owner: Member 3 - RAG & Data Engineer
-
-Public entry point that Member 4 (LLM & NLP Developer) and Member 2 (Backend
-Developer) call into. Given a user's natural-language query, this module:
-
-  1. Embeds the query (English or Telugu)
-  2. Retrieves the top-k most relevant government schemes from the vector store
-  3. Returns them as structured context, ready to be dropped into an LLM prompt
-
-This keeps retrieval logic (Member 3's responsibility) cleanly separated from
-prompt engineering / LLM calls (Member 4's responsibility).
-"""
-
 from typing import List, Dict, Optional
 
 from embeddings import embed_query
