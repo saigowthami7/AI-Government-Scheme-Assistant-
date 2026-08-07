@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Government Scheme Assistant</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-content">
+    <h1>🏛️ AI Government Scheme Assistant</h1>
+    <p class="tagline">Discover government schemes you're eligible for — in English or Telugu</p>
+  </div>
+  <div class="language-toggle">
+    <button id="lang-en" class="lang-btn active" data-lang="en">English</button>
+    <button id="lang-te" class="lang-btn" data-lang="te">తెలుగు</button>
+  </div>
+</header>
+
+<main class="app-main">
+
+  <!-- Search bar for direct scheme search (separate from chat) -->
+  <section class="search-section">
+    <input type="text" id="scheme-search-input" placeholder="Search schemes directly, e.g. 'farmer pension'..." />
+    <button id="scheme-search-btn">Search</button>
+  </section>
+  <section id="search-results" class="search-results hidden"></section>
+
+  <!-- Conversational chat interface -->
+  <section class="chat-section">
+    <div id="chat-window" class="chat-window">
+      <div class="message assistant-message">
+        <p id="welcome-message">
+          Hello! Tell me a bit about yourself — your age, occupation, and state — and I'll help you find
+          government schemes you may be eligible for.
+        </p>
+      </div>
+    </div>
+
+    <div class="profile-summary hidden" id="profile-summary"></div>
+
+    <form id="chat-form" class="chat-input-row">
+      <input
+        type="text"
+        id="chat-input"
+        placeholder="e.g. I am a 62 year old farmer in Andhra Pradesh..."
+        autocomplete="off"
+        required
+      />
+      <button type="submit" id="send-btn">Send</button>
+    </form>
+  </section>
+
+</main>
+
+<footer class="app-footer">
+  <p>Information is retrieved from a verified scheme knowledge base. Always confirm details on the official source link before applying.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
