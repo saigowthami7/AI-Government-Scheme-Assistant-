@@ -1,15 +1,3 @@
-"""
-vector_store.py
-Owner: Member 3 - RAG & Data Engineer
-
-Builds and queries a FAISS vector index over the embedded scheme chunks.
-Also persists the index + metadata to disk so the backend doesn't have to
-re-embed the whole knowledge base on every server restart.
-
-Install:
-    pip install faiss-cpu
-"""
-
 import json
 import os
 import pickle
