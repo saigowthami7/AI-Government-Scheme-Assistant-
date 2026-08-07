@@ -1,15 +1,3 @@
-"""
-data_loader.py
-Owner: Member 3 - RAG & Data Engineer
-
-Loads and cleans the verified government scheme dataset from data/schemes.json,
-and prepares text "chunks" that will be embedded and stored in the vector database.
-
-Each scheme is flattened into a single descriptive text block so that semantic
-search can match a user's natural-language query (in English or Telugu) against
-the right scheme.
-"""
-
 import json
 import os
 from typing import List, Dict
