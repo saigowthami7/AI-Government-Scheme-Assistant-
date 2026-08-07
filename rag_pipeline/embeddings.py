@@ -1,19 +1,3 @@
-"""
-embeddings.py
-Owner: Member 3 - RAG & Data Engineer
-
-Converts scheme text chunks into vector embeddings using sentence-transformers.
-Uses a multilingual model so that both English and Telugu queries can be
-embedded into the same vector space as the (English) scheme knowledge base.
-
-Install:
-    pip install sentence-transformers
-
-Model used: 'paraphrase-multilingual-MiniLM-L12-v2'
-  - Lightweight, supports 50+ languages including Telugu
-  - Good balance of speed vs. quality for a scheme-matching use case
-"""
-
 from typing import List
 import numpy as np
 
