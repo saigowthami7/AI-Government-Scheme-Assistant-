@@ -1,6 +1,6 @@
 # Member 3 – RAG & Data Engineer
 
-## responsibilities (from the project proposal)
+## Responsibilities (from the project proposal)
 - Collect and clean verified government scheme data
 - Document processing
 - Generate embeddings
