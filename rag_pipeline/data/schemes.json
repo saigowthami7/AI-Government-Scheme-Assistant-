@@ -1,0 +1,264 @@
+[
+  {
+    "id": "PMKISAN001",
+    "name_en": "PM-KISAN (Pradhan Mantri Kisan Samman Nidhi)",
+    "name_te": "పిఎం-కిసాన్ (ప్రధాన మంత్రి కిసాన్ సమ్మాన్ నిధి)",
+    "category": "Agriculture / Farmers",
+    "level": "Central",
+    "state": "All India",
+    "target_group": ["farmers"],
+    "eligibility": [
+      "Small and marginal farmer families owning cultivable land",
+      "Land records must be in the applicant's name",
+      "Excludes institutional land holders and high-income tax-paying farmer families"
+    ],
+    "benefits": "Income support of Rs. 6,000 per year, paid in three equal installments of Rs. 2,000 directly to bank accounts.",
+    "documents_required": ["Aadhaar card", "Land ownership records", "Bank account passbook", "Passport size photo"],
+    "application_process": "Apply online at the PM-KISAN portal, or through the local Common Service Centre (CSC), or via the village revenue/agriculture officer.",
+    "official_source": "https://pmkisan.gov.in"
+  },
+  {
+    "id": "PMAYU002",
+    "name_en": "Pradhan Mantri Awas Yojana - Urban (PMAY-U)",
+    "name_te": "ప్రధాన మంత్రి ఆవాస్ యోజన - పట్టణ",
+    "category": "Housing",
+    "level": "Central",
+    "state": "All India",
+    "target_group": ["families seeking housing support", "women"],
+    "eligibility": [
+      "Economically Weaker Section (EWS), Low Income Group (LIG) or Middle Income Group (MIG) households",
+      "Applicant or family should not own a pucca house anywhere in India",
+      "Preference given to women as co-owners or owners"
+    ],
+    "benefits": "Interest subsidy on home loans and financial assistance for construction/purchase of a house, up to Rs. 2.67 lakh depending on income category.",
+    "documents_required": ["Aadhaar card", "Income certificate", "Bank account details", "Property/land documents (if any)"],
+    "application_process": "Apply online through the PMAY-U portal or at a Common Service Centre with required documents.",
+    "official_source": "https://pmay-urban.gov.in"
+  },
+  {
+    "id": "NSP003",
+    "name_en": "National Scholarship Portal - Post Matric Scholarship",
+    "name_te": "నేషనల్ స్కాలర్‌షిప్ పోర్టల్ - పోస్ట్ మెట్రిక్ స్కాలర్‌షిప్",
+    "category": "Education",
+    "level": "Central",
+    "state": "All India",
+    "target_group": ["students"],
+    "eligibility": [
+      "Students belonging to SC/ST/OBC/Minority/EWS categories studying post-matriculation courses",
+      "Family income below the prescribed threshold (varies by category)",
+      "Regular student in a recognized institution"
+    ],
+    "benefits": "Tuition fee reimbursement, maintenance allowance, and other course-related financial assistance.",
+    "documents_required": ["Aadhaar card", "Caste/category certificate", "Income certificate", "Previous marksheet", "Bank account linked with Aadhaar"],
+    "application_process": "Register and apply on the National Scholarship Portal (scholarships.gov.in) within the notified window each academic year.",
+    "official_source": "https://scholarships.gov.in"
+  },
+  {
+    "id": "AP_YSRRB004",
+    "name_en": "YSR Rythu Bharosa",
+    "name_te": "వైయస్సార్ రైతు భరోసా",
+    "category": "Agriculture / Farmers",
+    "level": "State",
+    "state": "Andhra Pradesh",
+    "target_group": ["farmers"],
+    "eligibility": [
+      "Farmer families (including tenant farmers and land-less agricultural laborers) in Andhra Pradesh",
+      "Land record or tenancy documentation as per scheme guidelines"
+    ],
+    "benefits": "Annual financial assistance of Rs. 13,500 per farmer family, combining state and central (PM-KISAN) contributions.",
+    "documents_required": ["Aadhaar card", "Land records or tenant farmer certificate", "Bank passbook"],
+    "application_process": "Apply through the village/ward secretariat or the official AP agriculture department portal.",
+    "official_source": "https://ysrrythubharosa.ap.gov.in"
+  },
+  {
+    "id": "AP_ASARA005",
+    "name_en": "YSR Pension Kanuka (Asara)",
+    "name_te": "వైయస్సార్ పెన్షన్ కానుక",
+    "category": "Senior Citizens / Social Welfare",
+    "level": "State",
+    "state": "Andhra Pradesh",
+    "target_group": ["senior citizens", "persons with disabilities"],
+    "eligibility": [
+      "Senior citizens aged 60 years and above",
+      "Persons with disabilities (40% or more), single women, weavers, fishermen, transgender persons, and other specified categories",
+      "Below poverty line / eligible ration card household in Andhra Pradesh"
+    ],
+    "benefits": "Monthly pension ranging from approximately Rs. 3,000 to Rs. 10,000 depending on category, credited directly to the beneficiary.",
+    "documents_required": ["Aadhaar card", "Age proof", "Disability certificate (if applicable)", "Ration card", "Bank account details"],
+    "application_process": "Apply at the local village/ward secretariat with required documents; verification is done by the welfare assistant.",
+    "official_source": "https://ap.gov.in"
+  },
+  {
+    "id": "PMMY006",
+    "name_en": "Pradhan Mantri MUDRA Yojana",
+    "name_te": "ప్రధాన మంత్రి ముద్రా యోజన",
+    "category": "Small Business / Self-Employment",
+    "level": "Central",
+    "state": "All India",
+    "target_group": ["small business owners", "workers"],
+    "eligibility": [
+      "Non-corporate, non-farm small/micro enterprises",
+      "Indian citizen with a viable business plan",
+      "Loan requirement up to Rs. 10 lakh"
+    ],
+    "benefits": "Collateral-free loans under three categories: Shishu (up to Rs. 50,000), Kishor (up to Rs. 5 lakh), and Tarun (up to Rs. 10 lakh).",
+    "documents_required": ["Aadhaar card", "PAN card", "Business plan/proof", "Bank account details", "Passport size photo"],
+    "application_process": "Apply at any participating bank, NBFC, or Micro Finance Institution, or online via the MUDRA/Udyamimitra portal.",
+    "official_source": "https://www.mudra.org.in"
+  },
+  {
+    "id": "PMMVY007",
+    "name_en": "Pradhan Mantri Matru Vandana Yojana (PMMVY)",
+    "name_te": "ప్రధాన మంత్రి మాతృ వందన యోజన",
+    "category": "Women & Children",
+    "level": "Central",
+    "state": "All India",
+    "target_group": ["women", "children"],
+    "eligibility": [
+      "Pregnant women and lactating mothers for their first live birth",
+      "Applicant must not be a central/state government employee (with certain exceptions)"
+    ],
+    "benefits": "Cash incentive of Rs. 5,000 in installments for the first child, subject to conditions like health check-ups and registration.",
+    "documents_required": ["Aadhaar card", "Bank/post office account passbook", "Mother and Child Protection (MCP) card"],
+    "application_process": "Apply through the local Anganwadi Centre or approved health facility, or via the PMMVY web portal/app.",
+    "official_source": "https://pmmvy.wcd.gov.in"
+  },
+  {
+    "id": "APDWARAKA008",
+    "name_en": "YSR Vahana Mitra",
+    "name_te": "వైయస్సార్ వాహన మిత్ర",
+    "category": "Workers / Transport",
+    "level": "State",
+    "state": "Andhra Pradesh",
+    "target_group": ["workers", "small business owners"],
+    "eligibility": [
+      "Auto-rickshaw, taxi, and maxi-cab drivers who own their vehicle in Andhra Pradesh",
+      "Vehicle should be registered and used for commercial purposes"
+    ],
+    "benefits": "Annual financial assistance of Rs. 10,000 to support vehicle maintenance and insurance costs.",
+    "documents_required": ["Aadhaar card", "Driving license", "Vehicle registration certificate", "Bank passbook"],
+    "application_process": "Apply through the village/ward secretariat with vehicle and identity documents.",
+    "official_source": "https://ap.gov.in"
+  },
+  {
+    "id": "PMJAY009",
+    "name_en": "Ayushman Bharat - Pradhan Mantri Jan Arogya Yojana (PM-JAY)",
+    "name_te": "ఆయుష్మాన్ భారత్ - ప్రధాన మంత్రి జన ఆరోగ్య యోజన",
+    "category": "Health",
+    "level": "Central",
+    "state": "All India",
+    "target_group": ["families seeking welfare or housing support", "senior citizens"],
+    "eligibility": [
+      "Families identified as deprived/occupational category as per SECC database",
+      "No existing cap on family size, age, or gender"
+    ],
+    "benefits": "Health cover of up to Rs. 5 lakh per family per year for secondary and tertiary care hospitalization.",
+    "documents_required": ["Aadhaar card", "Ration card", "Family ID / SECC verification"],
+    "application_process": "Check eligibility on the PM-JAY website or at a nearby Ayushman Bharat empanelled hospital / Common Service Centre.",
+    "official_source": "https://pmjay.gov.in"
+  },
+  {
+    "id": "APVIDYADEEVENA010",
+    "name_en": "Jagananna Vidya Deevena",
+    "name_te": "జగనన్న విద్యా దీవెన",
+    "category": "Education",
+    "level": "State",
+    "state": "Andhra Pradesh",
+    "target_group": ["students"],
+    "eligibility": [
+      "Students from economically weaker families studying in colleges/professional courses in Andhra Pradesh",
+      "Family annual income within prescribed limit"
+    ],
+    "benefits": "Full reimbursement of tuition fees directly to the mother's/guardian's bank account.",
+    "documents_required": ["Aadhaar card", "Income certificate", "College admission/bonafide certificate", "Bank account details"],
+    "application_process": "Apply through the Jagananna Vidya Deevena portal or the respective educational institution.",
+    "official_source": "https://jnanabhumi.ap.gov.in"
+  },
+  {
+    "id": "PMEGP011",
+    "name_en": "Prime Minister's Employment Generation Programme (PMEGP)",
+    "name_te": "ప్రధాన మంత్రి ఉపాధి కల్పన కార్యక్రమం",
+    "category": "Job Seekers / Self-Employment",
+    "level": "Central",
+    "state": "All India",
+    "target_group": ["job seekers", "small business owners"],
+    "eligibility": [
+      "Individuals above 18 years of age",
+      "At least VIII standard pass for projects above a specified cost",
+      "New micro-enterprise, not an expansion of an existing unit"
+    ],
+    "benefits": "Margin money subsidy of 15%-35% of project cost (varies by category and area) for setting up new micro-enterprises.",
+    "documents_required": ["Aadhaar card", "Education certificate", "Project report", "Caste certificate (if applicable)", "Bank account details"],
+    "application_process": "Apply online through the PMEGP e-portal (KVIC); interviews are conducted by the district task force committee.",
+    "official_source": "https://www.kviconline.gov.in/pmegpeportal"
+  },
+  {
+    "id": "APDISABILITY012",
+    "name_en": "YSR Aasara for Persons with Disabilities Pension",
+    "name_te": "వికలాంగుల పింఛను",
+    "category": "Persons with Disabilities",
+    "level": "State",
+    "state": "Andhra Pradesh",
+    "target_group": ["persons with disabilities"],
+    "eligibility": [
+      "Person with 40% or more disability as certified by a medical board",
+      "Resident of Andhra Pradesh with eligible household income"
+    ],
+    "benefits": "Monthly pension assistance (amount varies by disability category, higher for 80%+ disability).",
+    "documents_required": ["Aadhaar card", "Disability certificate", "Residence proof", "Bank account details"],
+    "application_process": "Apply at the village/ward secretariat with medical board disability certificate.",
+    "official_source": "https://ap.gov.in"
+  },
+  {
+    "id": "SUKANYA013",
+    "name_en": "Sukanya Samriddhi Yojana",
+    "name_te": "సుకన్య సమృద్ధి యోజన",
+    "category": "Women & Children",
+    "level": "Central",
+    "state": "All India",
+    "target_group": ["women", "children"],
+    "eligibility": [
+      "Girl child below 10 years of age",
+      "Account opened by parent or legal guardian"
+    ],
+    "benefits": "High-interest small savings scheme to fund a girl child's education and marriage expenses, with tax benefits.",
+    "documents_required": ["Girl child's birth certificate", "Aadhaar card of guardian", "Address proof"],
+    "application_process": "Open an account at any post office or authorized bank branch with the required documents.",
+    "official_source": "https://www.india.gov.in/spotlight/sukanya-samriddhi-yojana"
+  },
+  {
+    "id": "APCHEYUTHA014",
+    "name_en": "YSR Cheyutha",
+    "name_te": "వైయస్సార్ చేయూత",
+    "category": "Women / Small Business",
+    "level": "State",
+    "state": "Andhra Pradesh",
+    "target_group": ["women", "small business owners"],
+    "eligibility": [
+      "Women aged 45 to 60 years from SC, ST, BC, and minority communities in Andhra Pradesh",
+      "Not already covered under other major state pension schemes"
+    ],
+    "benefits": "Financial assistance of Rs. 18,750 per year for four years to support small business/self-employment activities.",
+    "documents_required": ["Aadhaar card", "Caste certificate", "Age proof", "Bank account details"],
+    "application_process": "Apply through the village/ward secretariat; beneficiaries are identified via household surveys.",
+    "official_source": "https://ap.gov.in"
+  },
+  {
+    "id": "PMSYM015",
+    "name_en": "Pradhan Mantri Shram Yogi Maandhan (PM-SYM)",
+    "name_te": "ప్రధాన మంత్రి శ్రమ యోగి మాన్‌ధన్",
+    "category": "Workers / Pension",
+    "level": "Central",
+    "state": "All India",
+    "target_group": ["workers"],
+    "eligibility": [
+      "Unorganized sector workers aged 18-40 years",
+      "Monthly income up to Rs. 15,000",
+      "Not covered under EPFO/ESIC/NPS (government-funded)"
+    ],
+    "benefits": "Minimum assured monthly pension of Rs. 3,000 after the age of 60, with matching government contribution.",
+    "documents_required": ["Aadhaar card", "Savings bank account/Jan Dhan account", "Mobile number"],
+    "application_process": "Enroll at the nearest Common Service Centre with Aadhaar and bank account details.",
+    "official_source": "https://maandhan.in"
+  }
+]
