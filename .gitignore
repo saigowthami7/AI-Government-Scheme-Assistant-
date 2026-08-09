@@ -1,17 +1,36 @@
 
 # Python
-__pycache__/
+
+**pycache**/
 *.pyc
 
 # Virtual Environment
+
 venv/
 backend/venv/
 
 # VS Code
+
 .vscode/
 
 # Environment
+
 .env
 
 # Logs
+
 *.log
+
+# Database
+
+*.db
+
+# Backup files
+
+*_backup.py
+
+# Local frontend build/dependency files
+
+frontend/react-frontend/node_modules/
+frontend/react-frontend/dist/
+frontend/react-frontend/build/

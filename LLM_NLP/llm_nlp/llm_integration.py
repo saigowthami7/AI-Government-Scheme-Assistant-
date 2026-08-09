@@ -2,46 +2,55 @@
 llm_integration.py
 Owner: Member 4 - LLM & NLP Developer
 
-This is the main orchestration module that ties everything together:
+Main orchestration module:
 
-  user message
-      -> multilingual.detect_language()
-      -> nlp_extraction.extract_profile()
-      -> rag_pipeline.RAGPipeline.retrieve()   (Member 3's module)
-      -> eligibility_matcher.rank_schemes()
-      -> prompts.build_user_turn()
-      -> Anthropic Claude API call
-      -> final natural-language answer
-
-Member 2 (Backend) imports `handle_chat_message()` from this file and calls
-it from the /api/chat endpoint. That's the entire integration contract
-between the LLM/NLP layer and the backend.
-
-Install:
-    pip install anthropic
-
-Set your API key as an environment variable before running:
-    export ANTHROPIC_API_KEY="your-key-here"
+User message
+    -> Language detection
+    -> NLP profile extraction
+    -> RAG retrieval
+    -> Eligibility ranking
+    -> Prompt construction
+    -> Groq LLM
+    -> Final answer
 """
 
 import os
 import sys
 from typing import Dict, List
 
-import anthropic
+from groq import Groq
 
-from prompts import get_system_prompt, build_user_turn
-from nlp_extraction import extract_profile
-from eligibility_matcher import rank_schemes
-from multilingual import detect_language, language_instruction
+from .prompts import get_system_prompt, build_user_turn
+from .nlp_extraction import extract_profile
+from .eligibility_matcher import rank_schemes
+from .multilingual import detect_language, language_instruction
 
-# Make the sibling rag_pipeline package importable when this repo is
-# assembled back into the full monorepo (see PROJECT_INTEGRATION notes).
-sys.path.append(os.path.join(os.path.dirname(__file__), "..", "rag_pipeline"))
 
-MODEL_NAME = "claude-sonnet-4-6"
+# Make the sibling rag_pipeline package importable.
+ROOT = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), "..", "..")
+)
 
-client = anthropic.Anthropic()  # reads ANTHROPIC_API_KEY from env automatically
+RAG_PATH = os.path.join(ROOT, "rag_pipeline")
+
+if RAG_PATH not in sys.path:
+    sys.path.append(RAG_PATH)
+
+
+# Groq configuration
+MODEL_NAME = os.getenv(
+    "GROQ_MODEL",
+    "llama-3.3-70b-versatile"
+)
+
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+
+if not GROQ_API_KEY:
+    raise RuntimeError(
+        "GROQ_API_KEY environment variable is not set."
+    )
+
+client = Groq(api_key=GROQ_API_KEY)
 
 
 def handle_chat_message(
@@ -51,57 +60,131 @@ def handle_chat_message(
     rag_pipeline=None,
 ) -> Dict:
     """
-    Main entry point called by the backend.
+    Main entry point called by the FastAPI backend.
 
     Args:
-        user_message: the raw text the user just typed
-        conversation_history: list of {"role": "user"/"assistant", "content": str}
-        existing_profile: previously extracted profile dict, to be updated
-        rag_pipeline: an instance of rag_pipeline.RAGPipeline (Member 3's module),
-                       injected by the backend so this module doesn't need to
-                       own the vector index lifecycle.
+        user_message:
+            Raw message from the user.
 
-    Returns: {
-        "reply": str,
-        "language": "en" | "te",
-        "profile": dict,
-        "matched_schemes": [ ... ]
-    }
+        conversation_history:
+            Previous conversation messages.
+
+        existing_profile:
+            Previously extracted user profile.
+
+        rag_pipeline:
+            RAGPipeline instance supplied by the backend.
+
+    Returns:
+        Dictionary containing:
+            reply
+            language
+            profile
+            matched_schemes
     """
+
     conversation_history = conversation_history or []
     existing_profile = existing_profile or {}
 
-    # 1. Language detection
+    # ---------------------------------------------------------
+    # 1. Detect language
+    # ---------------------------------------------------------
     language = detect_language(user_message)
 
-    # 2. NLP: extract/update structured profile fields
-    profile = extract_profile(user_message, existing_profile)
+    # ---------------------------------------------------------
+    # 2. Extract/update user profile using NLP
+    # ---------------------------------------------------------
+    profile = extract_profile(
+        user_message,
+        existing_profile
+    )
 
-    # 3. RAG: retrieve relevant schemes
-    filters = {"state": profile["state"]} if profile.get("state") else None
-    retrieved = rag_pipeline.retrieve(user_message, top_k=5, filters=filters)
-    retrieved_schemes = [item["scheme"] for item in retrieved]
+    # ---------------------------------------------------------
+    # 3. Retrieve relevant schemes using RAG
+    # ---------------------------------------------------------
+    if rag_pipeline is None:
+        raise RuntimeError(
+            "RAG pipeline was not provided to handle_chat_message()."
+        )
 
-    # 4. Eligibility pre-ranking (transparent, rule-based signal for the LLM & UI)
-    ranked = rank_schemes(retrieved_schemes, profile)
+    filters = None
 
-    # 5. Build context string + prompt
-    context_string = rag_pipeline.build_context_string(retrieved)
-    system_prompt = get_system_prompt(language) + "\n" + language_instruction(language)
-    user_turn = build_user_turn(user_message, context_string, profile)
+    if profile.get("state"):
+        filters = {
+            "state": profile["state"]
+        }
 
-    # 6. Call Claude
-    messages = conversation_history + [{"role": "user", "content": user_turn}]
-    response = client.messages.create(
+    retrieved = rag_pipeline.retrieve(
+        user_message,
+        top_k=5,
+        filters=filters
+    )
+
+    retrieved_schemes = [
+        item["scheme"]
+        for item in retrieved
+    ]
+
+    # ---------------------------------------------------------
+    # 4. Rank schemes based on eligibility
+    # ---------------------------------------------------------
+    ranked = rank_schemes(
+        retrieved_schemes,
+        profile
+    )
+
+    # ---------------------------------------------------------
+    # 5. Build RAG context and prompts
+    # ---------------------------------------------------------
+    context_string = rag_pipeline.build_context_string(
+        retrieved
+    )
+
+    system_prompt = (
+        get_system_prompt(language)
+        + "\n"
+        + language_instruction(language)
+    )
+
+    user_turn = build_user_turn(
+        user_message,
+        context_string,
+        profile
+    )
+
+    # ---------------------------------------------------------
+    # 6. Prepare conversation messages
+    # ---------------------------------------------------------
+    messages = conversation_history + [
+        {
+            "role": "user",
+            "content": user_turn
+        }
+    ]
+
+    # ---------------------------------------------------------
+    # 7. Call Groq LLM
+    # ---------------------------------------------------------
+    response = client.chat.completions.create(
         model=MODEL_NAME,
+        messages=[
+            {
+                "role": "system",
+                "content": system_prompt
+            },
+            *messages
+        ],
         max_tokens=1024,
-        system=system_prompt,
-        messages=messages,
-    )
-    reply_text = "".join(
-        block.text for block in response.content if getattr(block, "type", None) == "text"
     )
 
+    # ---------------------------------------------------------
+    # 8. Extract final response
+    # ---------------------------------------------------------
+    reply_text = response.choices[0].message.content
+
+    # ---------------------------------------------------------
+    # 9. Return result to FastAPI backend
+    # ---------------------------------------------------------
     return {
         "reply": reply_text,
         "language": language,
@@ -110,15 +193,32 @@ def handle_chat_message(
     }
 
 
+# -------------------------------------------------------------
+# Standalone test
+# -------------------------------------------------------------
 if __name__ == "__main__":
-    # Standalone smoke test (requires ANTHROPIC_API_KEY and a built vector index)
-    sys.path.append(os.path.join(os.path.dirname(__file__), "..", "rag_pipeline"))
-    from rag_pipeline import RAGPipeline  # noqa: E402
+
+    from rag_pipeline import RAGPipeline
 
     pipeline = RAGPipeline()
+
     result = handle_chat_message(
-        "I am a 62 year old farmer in Andhra Pradesh. What support can I get?",
+        "I am a 62 year old farmer in Andhra Pradesh. "
+        "What support can I get?",
         rag_pipeline=pipeline,
     )
-    print(result["reply"])
+
+    print("\n==============================")
+    print("LANGUAGE:")
+    print(result["language"])
+
+    print("\nPROFILE:")
+    print(result["profile"])
+
+    print("\nMATCHED SCHEMES:")
     print(result["matched_schemes"])
+
+    print("\nREPLY:")
+    print(result["reply"])
+
+    print("==============================")
