@@ -41,7 +41,7 @@ from models import (
 # Make sibling team packages importable
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 sys.path.append(os.path.join(ROOT, "rag_pipeline"))
-sys.path.append(os.path.join(ROOT, "llm_nlp"))
+sys.path.append(os.path.join(ROOT, "LLM_NLP"))
 
 app = FastAPI(
     title="AI Government Scheme Assistant API",
@@ -83,7 +83,7 @@ def chat(request: ChatRequest):
     reuses it for follow-up questions so profile details and history
     accumulate across the conversation.
     """
-    from llm_integration import handle_chat_message  # Member 4's module
+    from llm_nlp.llm_integration import handle_chat_message  # Member 4's module
 
     session_id = request.session_id or create_session()
     existing_profile = get_session_profile(session_id)
